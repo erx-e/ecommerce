@@ -12,7 +12,8 @@ export class CategoriesService {
   private apiUrl = `${environment.API_URL}/api/categories`;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+
   ) { }
 
   getAll(limit?: number, offset?: number) {
