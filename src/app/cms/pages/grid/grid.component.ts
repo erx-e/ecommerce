@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-grid',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnInit {
-
-  constructor() { }
+  form: FormGroup | null = null;
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  private buildForm(){
+    this.form = this.formBuilder.group({
+      fullName:{
+        name: ['', [Validators.required, Validators.maxLength(10)]],
+        lastName:['', [Validators.required, Validators.maxLength(10)]]
+      }
+    })
   }
 
 }
